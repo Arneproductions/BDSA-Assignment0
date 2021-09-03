@@ -17,14 +17,25 @@ namespace LeapYear
                 goto Start;    
             }
             
-            if(IsLeapYear(year))
-                Console.WriteLine("Yay");
-            else
-                Console.WriteLine("Nay");
+            try
+            {
+                if(IsLeapYear(year))
+                    Console.WriteLine("Yay");
+                else
+                    Console.WriteLine("Nay");
+            }
+            catch(ArgumentException ex)
+            {
+                Console.WriteLine(ex.Message);
+                goto Start;
+            }
         }
 
         public static bool IsLeapYear(int year) 
         {
+            if(year <= 1582)
+                throw new ArgumentException("Year has to be above 1582");
+
             return year % 100 == 0 ? year % 400 == 0 : year % 4 == 0;
         }
     }
