@@ -12,12 +12,15 @@ namespace LeapYear
             int year;
 
             if(!int.TryParse(inputYear, out year))
+            {
+                Console.WriteLine("Year has to be a number! Try again... \n");
                 goto Start;    
+            }
             
             if(IsLeapYear(year))
-                System.Console.WriteLine("Yay");
+                Console.WriteLine("Yay");
             else
-                System.Console.WriteLine("Nay");
+                Console.WriteLine("Nay");
         }
 
         public static bool IsLeapYear(int year) 
