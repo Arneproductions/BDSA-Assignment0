@@ -7,10 +7,13 @@ namespace LeapYear
         public static void Main(string[] args)
         {
             Start:
+
+            // Get user input 
             Console.Write("Type in a year: ");
             string inputYear = Console.ReadLine();
             int year;
 
+            // Parse input
             if(!int.TryParse(inputYear, out year))
             {
                 Console.WriteLine("Year has to be a number! Try again... \n");
