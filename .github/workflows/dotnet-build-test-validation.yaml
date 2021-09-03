@@ -2,7 +2,7 @@ name: Assignment-00 Build and Test
 
 on:
   pull_request:
-    branches: [ main ]
+    branches: [ master ]
     paths:
     - '**.cs'
     - '**.csproj'
