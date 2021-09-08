@@ -1,4 +1,7 @@
 using System;
+using System.IO;
+using System.Text;
+using System.Linq;
 using Xunit;
 
 namespace LeapYear.Tests
@@ -44,6 +47,42 @@ namespace LeapYear.Tests
         public void IsLeapYear_Under1583_ThrowArgumentException(int year)
         {
             Assert.Throws<ArgumentException>(() => Program.IsLeapYear(year));
+        }
+
+        [Fact]
+        public void Program_LeapYear_ReturnYay()
+        {
+
+            // Arrange
+            StringBuilder sb = new StringBuilder();
+            StringWriter writer = new StringWriter(sb);
+            Console.SetIn(new StringReader("2004"));
+            Console.SetOut(writer);
+
+            // Act
+            Program.Main(null);
+            string output = writer.GetStringBuilder().ToString().Trim();
+
+            // Assert
+            Assert.Equal("Yay", output[^3..]);
+        }
+
+        [Fact]
+        public void Program_LeapYear_ReturnNay()
+        {
+
+            // Arrange
+            StringBuilder sb = new StringBuilder();
+            StringWriter writer = new StringWriter(sb);
+            Console.SetIn(new StringReader("2003"));
+            Console.SetOut(writer);
+
+            // Act
+            Program.Main(null);
+            string output = writer.GetStringBuilder().ToString().Trim();
+
+            // Assert
+            Assert.Equal("Nay", output[^3..]);
         }
     }
 }
